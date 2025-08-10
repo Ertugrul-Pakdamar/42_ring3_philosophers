@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_init_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 22:44:59 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/10 22:09:39 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/10 18:42:32 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/10 21:46:58 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-int	main(int argc, char **argv)
+void	ft_init_args(t_data *data, char **argv)
 {
-	t_data	*data;
-
-	if (!ft_is_argv_valid(argc, argv))
-		return (-1);
-	data = (t_data *)malloc(sizeof(t_data));
-	ft_init_args(data, argv);
-	printf("%d\n", data->philo_count);
-	printf("%d\n", data->time_to_die);
-	printf("%d\n", data->time_to_eat);
-	printf("%d\n", data->time_to_sleep);
-	//printf("%d\n", data->meals_required);
-	free(data);
-	return (0);
+	ft_custom_atoi(argv[1], &(data->philo_count));
+	ft_custom_atoi(argv[2], &(data->time_to_die));
+	ft_custom_atoi(argv[3], &(data->time_to_eat));
+	ft_custom_atoi(argv[4], &(data->time_to_sleep));
+	if (argv[5])
+		ft_custom_atoi(argv[5], &(data->meals_required));
 }

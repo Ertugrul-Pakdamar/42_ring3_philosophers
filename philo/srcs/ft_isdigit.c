@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 22:44:59 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/10 22:09:39 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/10 16:42:48 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/10 18:39:16 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_philo.h"
-
-int	main(int argc, char **argv)
+int	ft_isdigit(int c)
 {
-	t_data	*data;
-
-	if (!ft_is_argv_valid(argc, argv))
-		return (-1);
-	data = (t_data *)malloc(sizeof(t_data));
-	ft_init_args(data, argv);
-	printf("%d\n", data->philo_count);
-	printf("%d\n", data->time_to_die);
-	printf("%d\n", data->time_to_eat);
-	printf("%d\n", data->time_to_sleep);
-	//printf("%d\n", data->meals_required);
-	free(data);
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }
