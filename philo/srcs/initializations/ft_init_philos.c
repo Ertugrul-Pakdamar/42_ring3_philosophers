@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:03:42 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:19:17 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 10:48:34 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	ft_init_philos(t_data *data)
 		data->philos[i] = (t_philo *)malloc(sizeof(t_philo));
 		if (!data->philos[i])
 			ft_exit_prog(data, -1);
-		data->philos[i]->id = i;
+		data->philos[i]->id = i + 1;
+		data->philos[i]->data = data;
 		i++;
 	}
 }

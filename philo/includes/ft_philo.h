@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:35:28 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:33:01 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 11:03:21 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,43 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <time.h>
+# include <sys/time.h>
 # include <unistd.h>
+
+typedef struct s_data	t_data;
 
 typedef struct s_philo
 {
-	int				id;
-	int				meals_eaten;
-	long long		last_meal_time;
-	pthread_t		thread;
-	pthread_mutex_t	right_fork;
-}					t_philo;
+	int					id;
+	int					meals_eaten;
+	long long			last_meal_time;
+	pthread_t			thread;
+	pthread_mutex_t		right_fork;
+	t_data				*data;
+}						t_philo;
 
 typedef struct s_data
 {
-	int				philo_count;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				meals_required;
-	int				someone_died;
-	long long		start_time;
-	t_philo			**philos;
-}					t_data;
+	int					philo_count;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					meals_required;
+	int					someone_died;
+	long long			start_time;
+	struct timeval		tv;
+	t_philo				**philos;
+}						t_data;
 
-int					ft_is_argv_valid(int argc, char **argv);
-int					ft_custom_atoi(char *str, int *num);
-int					ft_isdigit(int c);
-void				ft_init_args(t_data *data, char **argv);
-void				ft_exit_prog(t_data *data, int exit_code);
-void				ft_init_philos(t_data *data);
-void				ft_create_threads(t_data *data);
-void				ft_close_threads(t_data *data);
-void				*ft_life_cycle(void *arg);
+int						ft_is_argv_valid(int argc, char **argv);
+int						ft_custom_atoi(char *str, int *num);
+int						ft_isdigit(int c);
+void					ft_init_args(t_data *data, char **argv);
+void					ft_exit_prog(t_data *data, int exit_code);
+void					ft_init_philos(t_data *data);
+void					ft_create_threads(t_data *data);
+void					ft_close_threads(t_data *data);
+void					*ft_life_cycle(void *arg);
+size_t					ft_get_time(t_data *data);
 
 #endif

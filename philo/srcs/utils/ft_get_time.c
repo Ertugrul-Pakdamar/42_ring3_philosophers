@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_life_cycle.c                                    :+:      :+:    :+:   */
+/*   ft_get_time.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 10:28:33 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 11:08:17 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/11 10:54:58 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/11 10:57:40 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-void	*ft_life_cycle(void *arg)
+size_t	ft_get_time(t_data *data)
 {
-	t_philo	*philo;
+	struct timeval	tv;
 
-	philo = (t_philo *)arg;
-	printf("thread %d startedç\n", philo->id);
-	return (arg);
+	if (gettimeofday(&tv, NULL) == -1)
+	{
+		ft_close_threads(data);
+		ft_exit_prog(data, -1);
+	}
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
