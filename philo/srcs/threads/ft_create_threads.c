@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:25:54 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:58:00 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 11:42:42 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_create_threads(t_data *data)
 {
-	int	i;
+	t_philo	*philo;
+	int		i;
 
 	i = 0;
 	data->start_time = ft_get_time(data);
 	while (i < data->philo_count)
 	{
-		pthread_create(&data->philos[i]->thread, NULL, ft_life_cycle,
-				data->philos[i]);
+		philo = data->philos[i];
+		pthread_mutex_init(&philo->right_fork, NULL);
+		pthread_create(&philo->thread, NULL, ft_life_cycle, philo);
 		i++;
 	}
 }
