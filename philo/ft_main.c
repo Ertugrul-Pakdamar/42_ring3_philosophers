@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:44:59 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 13:13:46 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 13:26:20 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ int	main(int argc, char **argv)
 	ft_init_philos(data);
 	ft_create_threads(data);
 	ft_close_threads(data);
-	if (data->someone_died)
-		ft_exit_prog(data, -1);
 	ft_exit_prog(data, 0);
 }
