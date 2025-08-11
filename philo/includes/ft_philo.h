@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:35:28 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 12:06:41 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:23:48 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void					ft_init_philos(t_data *data);
 void					ft_create_threads(t_data *data);
 void					ft_close_threads(t_data *data);
 void					*ft_life_cycle(void *arg);
-size_t					ft_get_time(t_data *data);
 void					ft_lock_left_fork(int id, t_data *data, int type);
 void					ft_lock_right_fork(int id, t_data *data, int type);
 void					ft_unlock_forks(int id, t_data *data);
 void					ft_usleep(size_t time_in_ms, t_data *data);
+long long				ft_get_time(t_data *data);
 
 #endif

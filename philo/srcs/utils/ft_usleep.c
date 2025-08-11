@@ -6,17 +6,23 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:04:15 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 12:06:37 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:16:39 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-void	ft_usleep(size_t time_in_ms, t_data *data)
+void	ft_usleep(size_t ms, t_data *data)
 {
-	int	time;
+	long long	start;
+	long long	now;
 
-	time = ft_get_time(data);
-	while (ft_get_time(data) - time < time_in_ms)
+	start = (long long)ft_get_time(data);
+	while (1)
+	{
+		now = (long long)ft_get_time(data);
+		if (now - start >= (long long)ms)
+			break ;
 		usleep(200);
+	}
 }
