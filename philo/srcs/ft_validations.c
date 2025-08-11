@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:45:29 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/10 21:30:55 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 08:17:46 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	ft_is_argv_valid(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '+'
-				&& argv[i][j] != '-')
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '+')
 				return (0);
 			j++;
 		}

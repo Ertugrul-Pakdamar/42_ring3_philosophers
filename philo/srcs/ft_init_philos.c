@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_args.c                                     :+:      :+:    :+:   */
+/*   ft_init_philos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 18:42:32 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:01:09 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/11 10:03:42 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/11 10:19:17 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-void	ft_init_args(t_data *data, char **argv)
+void	ft_init_philos(t_data *data)
 {
-	ft_custom_atoi(argv[1], &(data->philo_count));
-	ft_custom_atoi(argv[2], &(data->time_to_die));
-	ft_custom_atoi(argv[3], &(data->time_to_eat));
-	ft_custom_atoi(argv[4], &(data->time_to_sleep));
-	if (argv[5])
-		ft_custom_atoi(argv[5], &(data->meals_required));
-	else
-		data->meals_required = -1;
+	int	i;
+	int	count;
+
+	count = data->philo_count;
+	data->philos = (t_philo **)malloc(sizeof(t_philo *) * (count + 1));
+	if (!data->philos)
+		ft_exit_prog(data, -1);
+	(data->philos)[count] = NULL;
+	i = 0;
+	while (i < count)
+	{
+		data->philos[i] = (t_philo *)malloc(sizeof(t_philo));
+		if (!data->philos[i])
+			ft_exit_prog(data, -1);
+		data->philos[i]->id = i;
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:44:59 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/10 22:09:39 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 10:03:29 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,9 @@ int	main(int argc, char **argv)
 	t_data	*data;
 
 	if (!ft_is_argv_valid(argc, argv))
-		return (-1);
+		ft_exit_prog(NULL, -1);
 	data = (t_data *)malloc(sizeof(t_data));
 	ft_init_args(data, argv);
-	printf("%d\n", data->philo_count);
-	printf("%d\n", data->time_to_die);
-	printf("%d\n", data->time_to_eat);
-	printf("%d\n", data->time_to_sleep);
-	//printf("%d\n", data->meals_required);
-	free(data);
-	return (0);
+	ft_init_philos(data);
+	ft_exit_prog(data, 0);
 }

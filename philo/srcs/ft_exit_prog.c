@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_args.c                                     :+:      :+:    :+:   */
+/*   ft_exit_prog.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 18:42:32 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:01:09 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/11 09:57:33 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/11 10:18:10 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-void	ft_init_args(t_data *data, char **argv)
+void	ft_exit_prog(t_data *data, int exit_code)
 {
-	ft_custom_atoi(argv[1], &(data->philo_count));
-	ft_custom_atoi(argv[2], &(data->time_to_die));
-	ft_custom_atoi(argv[3], &(data->time_to_eat));
-	ft_custom_atoi(argv[4], &(data->time_to_sleep));
-	if (argv[5])
-		ft_custom_atoi(argv[5], &(data->meals_required));
-	else
-		data->meals_required = -1;
+	int	i;
+
+	if (data)
+	{
+		if (data->philos)
+		{
+			i = 0;
+			while (data->philos[i])
+				free(data->philos[i++]);
+			free(data->philos);
+		}
+		free(data);
+	}
+	if (exit_code == 0)
+		printf("Success.");
+	if (exit_code == -1)
+		printf("Failure.");
+	exit(exit_code);
 }
