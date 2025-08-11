@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_close_threads.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 22:44:59 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:33:10 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/11 10:25:54 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/11 10:33:19 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-int	main(int argc, char **argv)
+void	ft_close_threads(t_data *data)
 {
-	t_data	*data;
+	int	i;
 
-	if (!ft_is_argv_valid(argc, argv))
-		ft_exit_prog(NULL, -1);
-	data = (t_data *)malloc(sizeof(t_data));
-	ft_init_args(data, argv);
-	ft_init_philos(data);
-	ft_create_threads(data);
-	ft_close_threads(data);
-	ft_exit_prog(data, 0);
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_join(data->philos[i]->thread, NULL);
+		i++;
+	}
 }

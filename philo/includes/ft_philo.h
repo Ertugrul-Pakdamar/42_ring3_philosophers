@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:35:28 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:11:54 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 10:33:01 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ int					ft_isdigit(int c);
 void				ft_init_args(t_data *data, char **argv);
 void				ft_exit_prog(t_data *data, int exit_code);
 void				ft_init_philos(t_data *data);
+void				ft_create_threads(t_data *data);
+void				ft_close_threads(t_data *data);
+void				*ft_life_cycle(void *arg);
 
 #endif

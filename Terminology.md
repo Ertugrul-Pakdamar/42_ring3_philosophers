@@ -37,6 +37,22 @@
 
 - Initializes the `t_philo **philos` data in the `t_data` structure.
 
+## Thread Functions
+
+### `void ft_create_threads(t_data *data)`
+
+- Creates threads for each philosopher in the `t_data` structure.
+
+### `void ft_close_threads(t_data *data)`
+
+- Joins all philosopher threads in the `t_data` structure.
+
+## Life Cycle Functions
+
+### `void *ft_life_cycle(void *arg)`
+
+- The main function for each philosopher thread.
+
 ## Exit Functions
 
 ### `void ft_exit_prog(t_data *data, int exit_code)`
