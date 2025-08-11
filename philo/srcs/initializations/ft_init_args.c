@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 18:42:32 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:01:09 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 13:13:52 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ft_init_args(t_data *data, char **argv)
 		ft_custom_atoi(argv[5], &(data->meals_required));
 	else
 		data->meals_required = -1;
+	data->someone_died = 0;
 }

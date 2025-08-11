@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:35:28 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 12:23:48 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:39:55 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+
+# define EATING 0
+# define SLEEPING 1
+# define THINKING 2
+# define DIED 3
+# define FORK 4
 
 typedef struct s_data	t_data;
 
@@ -59,5 +65,7 @@ void					ft_lock_right_fork(int id, t_data *data, int type);
 void					ft_unlock_forks(int id, t_data *data);
 void					ft_usleep(size_t time_in_ms, t_data *data);
 long long				ft_get_time(t_data *data);
+void					ft_print_status(t_data *data, t_philo *philo,
+							int status);
 
 #endif
