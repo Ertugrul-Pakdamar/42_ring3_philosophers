@@ -1,7 +1,8 @@
 NAME=philo
 
-SRC=	ft_main.c \
-		srcs/* \
+SRC=	*.c \
+		srcs/*.c \
+		srcs/*/* \
 
 all: $(NAME)
 
@@ -10,7 +11,7 @@ $(NAME): $(SRC)
 	@echo "Project Compiled Successfully."
 
 clean:
-	@rm -rf philo
+	@rm -f philo
 	@echo "Project Cleaned Successfully."
 
 fclean: clean

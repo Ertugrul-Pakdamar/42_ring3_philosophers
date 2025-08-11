@@ -32,3 +32,13 @@
 ### `void ft_init_args(t_data *data, char **argv)`
 
 - sets t_data structure with the values from `argv`.
+
+### `void ft_init_philos(t_data *data)`
+
+- Initializes the `t_philo **philos` data in the `t_data` structure.
+
+## Exit Functions
+
+### `void ft_exit_prog(t_data *data, int exit_code)`
+
+- Cleans up `t_data *data` and exits the program with the given exit code.
