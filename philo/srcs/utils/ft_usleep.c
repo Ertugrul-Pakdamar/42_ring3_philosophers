@@ -23,6 +23,6 @@ void	ft_usleep(size_t ms, t_data *data)
 		now = (long long)ft_get_time(data);
 		if (now - start >= (long long)ms)
 			break ;
-		usleep(100);
+		usleep(100 * 1000);
 	}
 }

@@ -10,28 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_philo.h>
+#include "ft_philo.h"
 
 int	ft_custom_atoi(char *str, int *num)
 {
 	int		index;
 	long	result;
+	int		digit_count;
 
+	if (!str || !num)
+		return (-1);
 	result = 0;
 	index = 0;
+	digit_count = 0;
 	while (str[index] == ' ' || (str[index] >= 9 && str[index] <= 13))
 		index++;
 	if (str[index] == '+')
 		index++;
-	if (str[index] == '+')
-		return (-1);
 	while (str[index] >= '0' && str[index] <= '9')
 	{
 		result = (result * 10) + (str[index] - '0');
 		if (result > INT_MAX)
 			return (-1);
 		index++;
+		digit_count++;
 	}
-	*num = result;
+	if (digit_count == 0 || str[index] != '\0')
+		return (-1);
+	*num = (int)result;
 	return (0);
 }

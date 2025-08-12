@@ -24,6 +24,5 @@ void	ft_unlock_forks(int id, t_data *data)
 	else
 		leftfork = &data->philos[id - 1]->right_fork;
 	pthread_mutex_unlock(rightfork);
-	ft_usleep(100, data);
 	pthread_mutex_unlock(leftfork);
 }

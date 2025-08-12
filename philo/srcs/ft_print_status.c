@@ -27,6 +27,6 @@ void	ft_print_status(t_data *data, t_philo *philo, int status)
 	if (status == THINKING && !ft_get_die(philo->data))
 		printf("%lld %d is thinking\n", timestamp, philo->id);
 	if (status == DIED)
-		printf("%lld %d is died\n", timestamp, philo->id);
+		printf("%lld %d died\n", timestamp, philo->id);
 	pthread_mutex_unlock(&data->print_mutex);
 }

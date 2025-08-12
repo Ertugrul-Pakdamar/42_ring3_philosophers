@@ -31,6 +31,7 @@ void	ft_init_philos(t_data *data)
 		data->philos[i]->id = i + 1;
 		data->philos[i]->data = data;
 		data->philos[i]->last_meal_time = ft_get_time(data);
+		data->philos[i]->meals_eaten = 0;
 		i++;
 	}
 }
