@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:28:33 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 13:31:07 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:24:39 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ static int	ft_fork_job(t_data *data, t_philo *philo)
 	long long	philo_ate;
 
 	philo_ate = ft_get_time(data);
-	if (philo->id % 2 == 0 && !data->someone_died)
+	if (philo->id % 2 == 0 && !ft_get_die(data))
 		ft_lock_left_fork(philo->id, data, 1);
-	else if (!data->someone_died)
+	else if (!ft_get_die(data))
 		ft_lock_right_fork(philo->id, data, 1);
-	if (ft_get_time(data) - philo_ate >= data->time_to_die
-		|| data->someone_died)
+	if (ft_get_time(data) - philo_ate >= data->time_to_die || ft_get_die(data))
 	{
 		data->someone_died = 1;
 		ft_print_status(data, philo, DIED);
@@ -40,20 +39,18 @@ void	*ft_life_cycle(void *arg)
 
 	philo = (t_philo *)arg;
 	data = philo->data;
-	my_meal_req = data->meals_required;
-	while (!data->someone_died)
+	my_meal_req = 0;
+	while (!ft_get_die(data) && (my_meal_req < ft_get_meal(data)
+			|| ft_get_meal(data) == -1))
 	{
 		if (ft_fork_job(data, philo))
 			break ;
 		ft_print_status(data, philo, EATING);
-		ft_usleep(data->time_to_eat, data);
 		ft_unlock_forks(philo->id, data);
 		ft_print_status(data, philo, SLEEPING);
 		ft_usleep(data->time_to_sleep, data);
 		ft_print_status(data, philo, THINKING);
-		if (my_meal_req == data->meals_required)
-			data->meals_required--;
-		my_meal_req--;
+		my_meal_req++;
 	}
 	return (NULL);
 }

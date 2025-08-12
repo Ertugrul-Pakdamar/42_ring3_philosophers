@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:35:28 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 12:39:55 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:24:22 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_data
 	int					meals_required;
 	int					someone_died;
 	long long			start_time;
+	pthread_mutex_t		print_mutex;
+	pthread_mutex_t		die_mutex;
+	pthread_mutex_t		meals_required_mutex;
 	struct timeval		tv;
 	t_philo				**philos;
 }						t_data;
@@ -67,5 +70,7 @@ void					ft_usleep(size_t time_in_ms, t_data *data);
 long long				ft_get_time(t_data *data);
 void					ft_print_status(t_data *data, t_philo *philo,
 							int status);
+int						ft_get_die(t_data *data);
+int						ft_get_meal(t_data *data);
 
 #endif

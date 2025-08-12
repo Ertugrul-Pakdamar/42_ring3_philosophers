@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 09:57:33 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/11 10:18:10 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 09:42:58 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,5 @@ void	ft_exit_prog(t_data *data, int exit_code)
 		}
 		free(data);
 	}
-	if (exit_code == 0)
-		printf("Success.");
-	if (exit_code == -1)
-		printf("Failure.");
 	exit(exit_code);
 }
