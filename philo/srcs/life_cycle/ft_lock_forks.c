@@ -14,25 +14,23 @@
 
 void	ft_lock_right_fork(int id, t_data *data, int type)
 {
-	id--;
-	if (ft_get_die(data))
-		return ;
-	pthread_mutex_lock(&data->philos[id]->right_fork);
-	ft_print_status(data, data->philos[id], FORK);
-	if (type == 1 && data->philo_count != 1)
-		ft_lock_left_fork(data->philos[id]->id, data, 0);
+    (void)type;
+    id--;
+    if (ft_get_die(data))
+        return ;
+    pthread_mutex_lock(&data->philos[id]->right_fork);
+    ft_print_status(data, data->philos[id], FORK);
 }
 
 void	ft_lock_left_fork(int id, t_data *data, int type)
 {
-	id--;
-	if (ft_get_die(data))
-		return ;
-	if (id == 0)
-		pthread_mutex_lock(&data->philos[data->philo_count - 1]->right_fork);
-	else
-		pthread_mutex_lock(&data->philos[id - 1]->right_fork);
-	ft_print_status(data, data->philos[id], FORK);
-	if (type == 1 && data->philo_count != 1)
-		ft_lock_right_fork(data->philos[id]->id, data, 0);
+    (void)type;
+    id--;
+    if (ft_get_die(data))
+        return ;
+    if (id == 0)
+        pthread_mutex_lock(&data->philos[data->philo_count - 1]->right_fork);
+    else
+        pthread_mutex_lock(&data->philos[id - 1]->right_fork);
+    ft_print_status(data, data->philos[id], FORK);
 }

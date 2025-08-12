@@ -25,17 +25,53 @@ void	ft_take_forks(t_data *data, t_philo *philo)
 
 int	ft_prepare_to_eat(t_data *data, t_philo *philo)
 {
-	if (ft_get_die(data))
-		return (0);
-	if (data->philo_count == 1)
-	{
-		ft_lock_right_fork(philo->id, data, 0);
-		while (!ft_get_die(data))
-			usleep(1000);
-		return (0);
-	}
-	ft_take_forks(data, philo);
-	return (1);
+    int                 idx;
+    pthread_mutex_t     *right;
+    pthread_mutex_t     *left;
+
+    if (ft_get_die(data))
+        return (0);
+    idx = philo->id - 1;
+    right = &data->philos[idx]->right_fork;
+    if (idx == 0)
+        left = &data->philos[data->philo_count - 1]->right_fork;
+    else
+        left = &data->philos[idx - 1]->right_fork;
+    if (data->philo_count == 1)
+    {
+        pthread_mutex_lock(right);
+        ft_print_status(data, philo, FORK);
+        while (!ft_get_die(data))
+            usleep(1000);
+        pthread_mutex_unlock(right);
+        return (0);
+    }
+    if (philo->id % 2 == 0)
+    {
+        pthread_mutex_lock(left);
+        ft_print_status(data, philo, FORK);
+        if (ft_get_die(data))
+        {
+            pthread_mutex_unlock(left);
+            return (0);
+        }
+        pthread_mutex_lock(right);
+        ft_print_status(data, philo, FORK);
+    }
+    else
+    {
+        usleep(1000);
+        pthread_mutex_lock(right);
+        ft_print_status(data, philo, FORK);
+        if (ft_get_die(data))
+        {
+            pthread_mutex_unlock(right);
+            return (0);
+        }
+        pthread_mutex_lock(left);
+        ft_print_status(data, philo, FORK);
+    }
+    return (1);
 }
 
 void	ft_update_meal_start(t_data *data, t_philo *philo)
@@ -47,8 +83,19 @@ void	ft_update_meal_start(t_data *data, t_philo *philo)
 
 void	ft_after_eat(t_data *data, t_philo *philo)
 {
+	int				idx;
+	pthread_mutex_t	*right;
+	pthread_mutex_t	*left;
+
 	ft_usleep(data->time_to_eat, data);
-	ft_unlock_forks(philo->id, data);
+	idx = philo->id - 1;
+	right = &data->philos[idx]->right_fork;
+	if (idx == 0)
+		left = &data->philos[data->philo_count - 1]->right_fork;
+	else
+		left = &data->philos[idx - 1]->right_fork;
+	pthread_mutex_unlock(right);
+	pthread_mutex_unlock(left);
 	pthread_mutex_lock(&data->meals_required_mutex);
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&data->meals_required_mutex);

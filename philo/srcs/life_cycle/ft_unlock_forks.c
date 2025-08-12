@@ -17,12 +17,16 @@ void	ft_unlock_forks(int id, t_data *data)
 	pthread_mutex_t	*rightfork;
 	pthread_mutex_t	*leftfork;
 
-	id--;
-	rightfork = &data->philos[id]->right_fork;
-	if (id == 0)
-		leftfork = &data->philos[data->philo_count - 1]->right_fork;
-	else
-		leftfork = &data->philos[id - 1]->right_fork;
-	pthread_mutex_unlock(rightfork);
-	pthread_mutex_unlock(leftfork);
+    id--;
+    rightfork = &data->philos[id]->right_fork;
+    if (id == 0)
+    {
+        leftfork = &data->philos[data->philo_count - 1]->right_fork;
+    }
+    else
+    {
+        leftfork = &data->philos[id - 1]->right_fork;
+    }
+    pthread_mutex_unlock(leftfork);
+    pthread_mutex_unlock(rightfork);
 }
