@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:03:42 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 09:44:45 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 13:14:33 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_init_philos(t_data *data)
 			ft_exit_prog(data, -1);
 		data->philos[i]->id = i + 1;
 		data->philos[i]->data = data;
+		data->philos[i]->last_meal_time = ft_get_time(data);
 		i++;
 	}
 }

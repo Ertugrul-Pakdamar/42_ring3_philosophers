@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usleep.c                                        :+:      :+:    :+:   */
+/*   ft_death_thread.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 12:04:15 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 13:12:52 by epakdama         ###   ########.fr       */
+/*   Created: 2025/08/12 13:03:58 by epakdama          #+#    #+#             */
+/*   Updated: 2025/08/12 13:15:27 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-void	ft_usleep(size_t ms, t_data *data)
+void	*ft_death_thread(void *arg)
 {
-	long long	start;
-	long long	now;
+	t_data	*data;
+	int		i;
 
-	start = (long long)ft_get_time(data);
-	while (!ft_get_die(data))
+	data = (t_data *)arg;
+	while (1)
 	{
-		now = (long long)ft_get_time(data);
-		if (now - start >= (long long)ms)
-			break ;
-		usleep(100);
+		i = 0;
+		while (data->philos[i])
+		{
+			if (ft_get_time(data)
+				- data->philos[i]->last_meal_time >= data->time_to_die)
+			{
+				data->someone_died = 1;
+				ft_print_status(data, data->philos[i], DIED);
+				return (NULL);
+			}
+			i++;
+		}
+		ft_usleep(200, data);
 	}
+	return (NULL);
 }

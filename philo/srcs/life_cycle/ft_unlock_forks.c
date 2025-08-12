@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 11:36:49 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 10:27:51 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 11:46:11 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_unlock_forks(int id, t_data *data)
 	else
 		leftfork = &data->philos[id - 1]->right_fork;
 	pthread_mutex_unlock(rightfork);
+	ft_usleep(100, data);
 	pthread_mutex_unlock(leftfork);
 }
