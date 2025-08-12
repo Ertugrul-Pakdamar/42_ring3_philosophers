@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:28:33 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 13:08:14 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 17:42:43 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static int	ft_fork_job(t_data *data, t_philo *philo)
 {
-	long long	philo_ate;
-
-	philo_ate = ft_get_time(data);
 	if (philo->id % 2 == 0 && !ft_get_die(data))
 		ft_lock_left_fork(philo->id, data, 1);
 	else if (!ft_get_die(data))
