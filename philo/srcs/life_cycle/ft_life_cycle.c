@@ -12,11 +12,6 @@
 
 #include "ft_philo.h"
 
-int			ft_prepare_to_eat(t_data *data, t_philo *philo);
-void		ft_update_meal_start(t_data *data, t_philo *philo);
-void		ft_after_eat(t_data *data, t_philo *philo);
-void		ft_sleep_and_think(t_data *data, t_philo *philo);
-
 static void	ft_update_meal_start(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->time_mutex);

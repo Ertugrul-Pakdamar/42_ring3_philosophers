@@ -18,11 +18,11 @@ void	ft_usleep(size_t ms, t_data *data)
 	long long	now;
 
 	start = (long long)ft_get_time(data);
-	while (!ft_get_die(data))
-	{
-		now = (long long)ft_get_time(data);
-		if (now - start >= (long long)ms)
-			break ;
-		usleep(100 * 1000);
-	}
+    while (!ft_get_die(data))
+    {
+        now = (long long)ft_get_time(data);
+        if (now - start >= (long long)ms)
+            break ;
+        usleep(100);
+    }
 }

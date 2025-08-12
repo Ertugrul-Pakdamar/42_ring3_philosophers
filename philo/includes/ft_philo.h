@@ -74,11 +74,7 @@ void					ft_print_status(t_data *data, t_philo *philo,
 int						ft_get_die(t_data *data);
 int						ft_get_meal(t_data *data);
 void					*ft_death_thread(void *arg);
-
-/* life_cycle helpers */
 int						ft_prepare_to_eat(t_data *data, t_philo *philo);
-void					ft_update_meal_start(t_data *data, t_philo *philo);
-void					ft_after_eat(t_data *data, t_philo *philo);
-void					ft_sleep_and_think(t_data *data, t_philo *philo);
+void					ft_take_forks(t_data *data, t_philo *philo);
 
 #endif
