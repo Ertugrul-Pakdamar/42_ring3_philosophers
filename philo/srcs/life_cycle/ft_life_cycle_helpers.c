@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:20:00 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 18:20:00 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:39:31 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,60 +18,60 @@ void	ft_take_forks(t_data *data, t_philo *philo)
 		ft_lock_left_fork(philo->id, data, 1);
 	else
 	{
-		usleep(1000);
+		usleep(100);
 		ft_lock_right_fork(philo->id, data, 1);
 	}
 }
 
 int	ft_prepare_to_eat(t_data *data, t_philo *philo)
 {
-    int                 idx;
-    pthread_mutex_t     *right;
-    pthread_mutex_t     *left;
+	int				idx;
+	pthread_mutex_t	*right;
+	pthread_mutex_t	*left;
 
-    if (ft_get_die(data))
-        return (0);
-    idx = philo->id - 1;
-    right = &data->philos[idx]->right_fork;
-    if (idx == 0)
-        left = &data->philos[data->philo_count - 1]->right_fork;
-    else
-        left = &data->philos[idx - 1]->right_fork;
-    if (data->philo_count == 1)
-    {
-        pthread_mutex_lock(right);
-        ft_print_status(data, philo, FORK);
-        while (!ft_get_die(data))
-            usleep(1000);
-        pthread_mutex_unlock(right);
-        return (0);
-    }
-    if (philo->id % 2 == 0)
-    {
-        pthread_mutex_lock(left);
-        ft_print_status(data, philo, FORK);
-        if (ft_get_die(data))
-        {
-            pthread_mutex_unlock(left);
-            return (0);
-        }
-        pthread_mutex_lock(right);
-        ft_print_status(data, philo, FORK);
-    }
-    else
-    {
-        usleep(1000);
-        pthread_mutex_lock(right);
-        ft_print_status(data, philo, FORK);
-        if (ft_get_die(data))
-        {
-            pthread_mutex_unlock(right);
-            return (0);
-        }
-        pthread_mutex_lock(left);
-        ft_print_status(data, philo, FORK);
-    }
-    return (1);
+	if (ft_get_die(data))
+		return (0);
+	idx = philo->id - 1;
+	right = &data->philos[idx]->right_fork;
+	if (idx == 0)
+		left = &data->philos[data->philo_count - 1]->right_fork;
+	else
+		left = &data->philos[idx - 1]->right_fork;
+	if (data->philo_count == 1)
+	{
+		pthread_mutex_lock(right);
+		ft_print_status(data, philo, FORK);
+		while (!ft_get_die(data))
+			usleep(1000);
+		pthread_mutex_unlock(right);
+		return (0);
+	}
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(left);
+		ft_print_status(data, philo, FORK);
+		if (ft_get_die(data))
+		{
+			pthread_mutex_unlock(left);
+			return (0);
+		}
+		pthread_mutex_lock(right);
+		ft_print_status(data, philo, FORK);
+	}
+	else
+	{
+		usleep(100);
+		pthread_mutex_lock(right);
+		ft_print_status(data, philo, FORK);
+		if (ft_get_die(data))
+		{
+			pthread_mutex_unlock(right);
+			return (0);
+		}
+		pthread_mutex_lock(left);
+		ft_print_status(data, philo, FORK);
+	}
+	return (1);
 }
 
 void	ft_update_meal_start(t_data *data, t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 13:03:58 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 13:15:27 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:39:35 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	*ft_death_thread(void *arg)
 		}
 		if (ft_everyone_ate_enough(data))
 			return (NULL);
-		usleep(500);
+		usleep(100);
 	}
 	return (NULL);
 }
