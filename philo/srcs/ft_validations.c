@@ -54,10 +54,8 @@ static int	ft_parse_positive_values(char **argv)
 	int	teat;
 	int	tsleep;
 
-	if (ft_custom_atoi(argv[1], &n)
-		|| ft_custom_atoi(argv[2], &tdie)
-		|| ft_custom_atoi(argv[3], &teat)
-		|| ft_custom_atoi(argv[4], &tsleep))
+	if (ft_custom_atoi(argv[1], &n) || ft_custom_atoi(argv[2], &tdie)
+		|| ft_custom_atoi(argv[3], &teat) || ft_custom_atoi(argv[4], &tsleep))
 		return (0);
 	if (n <= 0 || tdie <= 0 || teat <= 0 || tsleep <= 0)
 		return (0);
