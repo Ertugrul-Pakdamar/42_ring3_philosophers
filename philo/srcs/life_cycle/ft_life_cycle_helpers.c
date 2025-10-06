@@ -6,22 +6,11 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:20:00 by epakdama          #+#    #+#             */
-/*   Updated: 2025/09/14 20:05:40 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/06 11:41:12 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
-
-void	ft_take_forks(t_data *data, t_philo *philo)
-{
-	if (philo->id % 2 == 0)
-		ft_lock_left_fork(philo->id, data, 1);
-	else
-	{
-		usleep(100);
-		ft_lock_right_fork(philo->id, data, 1);
-	}
-}
 
 int	ft_one_philo_cycle(pthread_mutex_t *right, t_data *data, t_philo *philo)
 {
@@ -41,7 +30,7 @@ int	ft_multi_philo_cycle(pthread_mutex_t *right, pthread_mutex_t *left,
 		pthread_mutex_lock(left);
 		ft_print_status(data, philo, FORK);
 		if (ft_get_die(data))
-			return (pthread_mutex_unlock(left), 0);
+			return (pthread_mutex_unlock(left));
 		pthread_mutex_lock(right);
 		ft_print_status(data, philo, FORK);
 	}
@@ -51,7 +40,7 @@ int	ft_multi_philo_cycle(pthread_mutex_t *right, pthread_mutex_t *left,
 		pthread_mutex_lock(right);
 		ft_print_status(data, philo, FORK);
 		if (ft_get_die(data))
-			return (pthread_mutex_unlock(right), 0);
+			return (pthread_mutex_unlock(right));
 		pthread_mutex_lock(left);
 		ft_print_status(data, philo, FORK);
 	}
