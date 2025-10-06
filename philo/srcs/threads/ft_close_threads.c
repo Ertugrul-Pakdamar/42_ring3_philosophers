@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:25:54 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 13:09:34 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:16:02 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_close_threads(t_data *data)
 		i++;
 	}
 	i = 0;
-	while (i < data->philo_count)
+	while (i < data->philo_count - 1)
 	{
 		pthread_mutex_destroy(&data->philos[i]->right_fork);
 		i++;
