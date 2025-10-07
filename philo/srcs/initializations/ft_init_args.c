@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 18:42:32 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 21:01:11 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:04:02 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,4 @@ void	ft_init_args(t_data *data, char **argv)
 	else
 		data->meals_required = -1;
 	data->someone_died = 0;
-	if (!&data->print_mutex || !&data->die_mutex
-		|| !&data->meals_required_mutex || !&data->time_mutex)
-		ft_exit_prog(data, 1);
 }
