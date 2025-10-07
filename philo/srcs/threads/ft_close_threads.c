@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:25:54 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/06 18:16:02 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 09:29:01 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	ft_close_threads(t_data *data)
 	i = 0;
 	while (i < data->philo_count - 1)
 	{
-		pthread_mutex_destroy(&data->philos[i]->right_fork);
+		pthread_mutex_destroy(data->philos[i]->right_fork);
 		i++;
 	}
-	pthread_mutex_destroy(&data->die_mutex);
-	pthread_mutex_destroy(&data->print_mutex);
-	pthread_mutex_destroy(&data->meals_required_mutex);
-	pthread_mutex_destroy(&data->time_mutex);
+	pthread_mutex_destroy(data->die_mutex);
+	pthread_mutex_destroy(data->print_mutex);
+	pthread_mutex_destroy(data->meals_required_mutex);
+	pthread_mutex_destroy(data->time_mutex);
 }

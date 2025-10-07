@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 22:35:28 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/06 11:36:24 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 09:28:32 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_philo
 	int					meals_eaten;
 	long long			last_meal_time;
 	pthread_t			thread;
-	pthread_mutex_t		right_fork;
+	pthread_mutex_t		*right_fork;
 	t_data				*data;
 }						t_philo;
 
@@ -48,10 +48,10 @@ typedef struct s_data
 	int					someone_died;
 	long long			start_time;
 	pthread_t			death_thread;
-	pthread_mutex_t		print_mutex;
-	pthread_mutex_t		die_mutex;
-	pthread_mutex_t		meals_required_mutex;
-	pthread_mutex_t		time_mutex;
+	pthread_mutex_t		*print_mutex;
+	pthread_mutex_t		*die_mutex;
+	pthread_mutex_t		*meals_required_mutex;
+	pthread_mutex_t		*time_mutex;
 	t_philo				**philos;
 }						t_data;
 

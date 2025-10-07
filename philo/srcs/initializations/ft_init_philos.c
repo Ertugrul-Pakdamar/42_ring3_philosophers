@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:03:42 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 13:14:33 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 09:36:32 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	ft_init_philos(t_data *data)
 	{
 		data->philos[i] = (t_philo *)malloc(sizeof(t_philo));
 		if (!data->philos[i])
+			ft_exit_prog(data, -1);
+		data->philos[i]->right_fork = malloc(sizeof(pthread_mutex_t));
+		if (!data->philos[i]->right_fork)
 			ft_exit_prog(data, -1);
 		data->philos[i]->id = i + 1;
 		data->philos[i]->data = data;

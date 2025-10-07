@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:13:38 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 11:55:23 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 09:31:37 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	ft_get_die(t_data *data)
 {
 	int	res;
 
-	pthread_mutex_lock(&data->die_mutex);
+	pthread_mutex_lock(data->die_mutex);
 	res = data->someone_died;
-	pthread_mutex_unlock(&data->die_mutex);
+	pthread_mutex_unlock(data->die_mutex);
 	return (res);
 }
 
@@ -26,9 +26,9 @@ int	ft_get_meal(t_data *data)
 {
 	int	res;
 
-	pthread_mutex_lock(&data->meals_required_mutex);
+	pthread_mutex_lock(data->meals_required_mutex);
 	res = data->meals_required;
-	pthread_mutex_unlock(&data->meals_required_mutex);
+	pthread_mutex_unlock(data->meals_required_mutex);
 	return (res);
 }
 

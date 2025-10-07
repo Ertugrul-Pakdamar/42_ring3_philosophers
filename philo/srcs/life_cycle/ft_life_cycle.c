@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 10:28:33 by epakdama          #+#    #+#             */
-/*   Updated: 2025/08/12 17:42:43 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 09:31:06 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static void	ft_update_meal_start(t_data *data, t_philo *philo)
 {
-	pthread_mutex_lock(&data->time_mutex);
+	pthread_mutex_lock(data->time_mutex);
 	philo->last_meal_time = ft_get_time(data);
-	pthread_mutex_unlock(&data->time_mutex);
+	pthread_mutex_unlock(data->time_mutex);
 }
 
 static void	ft_after_eat(t_data *data, t_philo *philo)
 {
 	ft_usleep(data->time_to_eat, data);
 	ft_unlock_forks(philo->id, data);
-	pthread_mutex_lock(&data->meals_required_mutex);
+	pthread_mutex_lock(data->meals_required_mutex);
 	philo->meals_eaten++;
-	pthread_mutex_unlock(&data->meals_required_mutex);
+	pthread_mutex_unlock(data->meals_required_mutex);
 }
 
 static void	ft_sleep_and_think(t_data *data, t_philo *philo)
