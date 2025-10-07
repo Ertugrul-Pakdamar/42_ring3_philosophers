@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:20:00 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 21:12:41 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:14:27 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@ int	ft_one_philo_cycle(pthread_mutex_t *right, t_data *data, t_philo *philo)
 int	ft_multi_philo_cycle(pthread_mutex_t *right, pthread_mutex_t *left,
 		t_data *data, t_philo *philo)
 {
-	pthread_mutex_t	*primary_fork;
-	pthread_mutex_t	*secondary_fork;
-
 	if (philo->id % 2 == 0)
 	{
-		primary_fork = right;
-		secondary_fork = left;
+		pthread_mutex_lock(right);
+		ft_print_status(data, philo, FORK);
+		if (ft_get_die(data))
+			return (pthread_mutex_unlock(right));
+		pthread_mutex_lock(left);
+		ft_print_status(data, philo, FORK);
 	}
 	else
 	{
-		primary_fork = left;
-		secondary_fork = right;
+		usleep(250);
+		pthread_mutex_lock(left);
+		ft_print_status(data, philo, FORK);
+		if (ft_get_die(data))
+			return (pthread_mutex_unlock(left));
+		pthread_mutex_lock(right);
+		ft_print_status(data, philo, FORK);
 	}
-	pthread_mutex_lock(primary_fork);
-	ft_print_status(data, philo, FORK);
-	if (ft_get_die(data))
-		return (pthread_mutex_unlock(primary_fork));
-	pthread_mutex_lock(secondary_fork);
-	ft_print_status(data, philo, FORK);
 	return (1);
 }
 
