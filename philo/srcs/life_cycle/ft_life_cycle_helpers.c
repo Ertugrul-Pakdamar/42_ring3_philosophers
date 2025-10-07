@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:20:00 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 21:21:42 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:40:23 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_multi_philo_cycle(int idx, pthread_mutex_t *left, t_data *data,
 	}
 	else
 	{
-		usleep(250);
+		usleep(200);
 		pthread_mutex_lock(left);
 		ft_print_status(data, philo, FORK);
 		if (ft_get_die(data))
