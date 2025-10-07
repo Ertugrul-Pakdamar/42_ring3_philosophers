@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:20:00 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 09:37:06 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:01:39 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int	ft_prepare_to_eat(t_data *data, t_philo *philo)
 	if (ft_get_die(data))
 		return (0);
 	idx = philo->id - 1;
-	right = data->philos[idx]->right_fork;
+	right = &data->philos[idx]->right_fork;
 	if (idx == 0)
-		left = data->philos[data->philo_count - 1]->right_fork;
+		left = &data->philos[data->philo_count - 1]->right_fork;
 	else
-		left = data->philos[idx - 1]->right_fork;
+		left = &data->philos[idx - 1]->right_fork;
 	if (data->philo_count == 1)
 	{
 		return (ft_one_philo_cycle(right, data, philo));

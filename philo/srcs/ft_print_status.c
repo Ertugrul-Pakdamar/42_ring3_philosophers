@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:36:47 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 09:29:24 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:02:37 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_status(t_data *data, t_philo *philo, int status)
 {
 	long long	timestamp;
 
-	pthread_mutex_lock(data->print_mutex);
+	pthread_mutex_lock(&data->print_mutex);
 	timestamp = ft_get_time(data) - data->start_time;
 	if (status == FORK && !ft_get_die(philo->data))
 		printf("%lld %d has taken a fork\n", timestamp, philo->id);
@@ -28,5 +28,5 @@ void	ft_print_status(t_data *data, t_philo *philo, int status)
 		printf("%lld %d is thinking\n", timestamp, philo->id);
 	if (status == DIED)
 		printf("%lld %d died\n", timestamp, philo->id);
-	pthread_mutex_unlock(data->print_mutex);
+	pthread_mutex_unlock(&data->print_mutex);
 }

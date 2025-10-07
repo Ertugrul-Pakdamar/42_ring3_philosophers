@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 13:03:58 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 09:29:49 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:01:29 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static int	ft_everyone_ate_enough(t_data *data)
 	i = 0;
 	while (data->philos[i])
 	{
-		pthread_mutex_lock(data->meals_required_mutex);
+		pthread_mutex_lock(&data->meals_required_mutex);
 		eaten = data->philos[i]->meals_eaten;
-		pthread_mutex_unlock(data->meals_required_mutex);
+		pthread_mutex_unlock(&data->meals_required_mutex);
 		if (eaten < data->meals_required)
 			return (0);
 		i++;
@@ -36,14 +36,14 @@ static int	ft_check_philo_alive(t_data *data, int i)
 {
 	long long	last;
 
-	pthread_mutex_lock(data->time_mutex);
+	pthread_mutex_lock(&data->time_mutex);
 	last = data->philos[i]->last_meal_time;
-	pthread_mutex_unlock(data->time_mutex);
+	pthread_mutex_unlock(&data->time_mutex);
 	if (ft_get_time(data) - last >= data->time_to_die)
 	{
-		pthread_mutex_lock(data->die_mutex);
+		pthread_mutex_lock(&data->die_mutex);
 		data->someone_died = 1;
-		pthread_mutex_unlock(data->die_mutex);
+		pthread_mutex_unlock(&data->die_mutex);
 		ft_print_status(data, data->philos[i], DIED);
 		return (0);
 	}

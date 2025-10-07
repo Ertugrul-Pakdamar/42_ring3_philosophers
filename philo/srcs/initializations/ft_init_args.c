@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 18:42:32 by epakdama          #+#    #+#             */
-/*   Updated: 2025/10/07 09:39:42 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:01:11 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ void	ft_init_args(t_data *data, char **argv)
 	else
 		data->meals_required = -1;
 	data->someone_died = 0;
-	data->print_mutex = malloc(sizeof(pthread_mutex_t));
-	data->die_mutex = malloc(sizeof(pthread_mutex_t));
-	data->meals_required_mutex = malloc(sizeof(pthread_mutex_t));
-	data->time_mutex = malloc(sizeof(pthread_mutex_t));
-	if (!data->print_mutex || !data->die_mutex
-		|| !data->meals_required_mutex || !data->time_mutex)
+	if (!&data->print_mutex || !&data->die_mutex
+		|| !&data->meals_required_mutex || !&data->time_mutex)
 		ft_exit_prog(data, 1);
 }
