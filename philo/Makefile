@@ -11,9 +11,9 @@ $(NAME): $(SRC)
 	@echo "Project Compiled Successfully."
 
 clean:
-	@rm -f philo
-	@echo "Project Cleaned Successfully."
 
 fclean: clean
+	@rm -f philo
+	@echo "Project Cleaned Successfully."
 
 re: fclean all
